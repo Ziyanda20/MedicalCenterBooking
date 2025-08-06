@@ -1,0 +1,38 @@
+// _base.scss
+@import 'variables';
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-stack;
+  font-size: $base-font-size;
+  line-height: 1.6;
+  color: $text-primary;
+  background-color: $bg-body;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  @media (min-width: $breakpoint-lg) {
+    margin-top: map-get($spacing-scale, '8' );
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: $spacing-unit;
+  line-height: 1.2;
+  color: $text-primary;
+}
+
+a {
+  text-decoration: none;
+  color: $primary;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    color: $primary-hover;
+  }
+}

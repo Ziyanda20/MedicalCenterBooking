@@ -1,0 +1,23 @@
+:root, [data-theme="light"] {
+  --primary: #0E64D2;
+  --primary-hover: #0B4FA8;
+  --secondary: #2ecc71;
+  --error: #e74c3c;
+  
+  --text: #2c3e50;
+  --text-muted: #7f8c8d;
+  --bg: #ffffff;
+  --bg-alt: #f8f9fa;
+}
+
+[data-theme="dark"] {
+  --primary: #0B4FA8; 
+  --primary-hover: #083A7E;
+  --secondary: #27ae60;
+  --error: #c0392b;
+  
+  --text: #ecf0f1;
+  --text-muted: #bdc3c7;
+  --bg: #121212;
+  --bg-alt: #1e1e1e;
+}

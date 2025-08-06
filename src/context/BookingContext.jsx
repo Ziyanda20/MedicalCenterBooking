@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import {getAppointments,createAppointment,deleteAppointment,updateAppointment,} from '../services/bookingService';
+import BookingService from '../services/bookingService';
 
 export const BookingContext = createContext();
 
@@ -9,12 +9,11 @@ export const BookingProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
- 
   useEffect(() => {
     const fetchAppointments = async () => {
       setLoading(true);
       try {
-        const data = await getAppointments();
+        const data = await BookingService.getAppointments();
         setAppointments(data);
       } catch (err) {
         console.error('Failed to fetch appointments:', err);
@@ -29,7 +28,7 @@ export const BookingProvider = ({ children }) => {
 
   const addAppointment = async (appointmentData) => {
     try {
-      const newAppointment = await createAppointment(appointmentData);
+      const newAppointment = await BookingService.createAppointment(appointmentData);
       setAppointments((prev) => [...prev, newAppointment]);
     } catch (err) {
       console.error('Failed to add appointment:', err);
@@ -39,7 +38,7 @@ export const BookingProvider = ({ children }) => {
 
   const removeAppointment = async (id) => {
     try {
-      await deleteAppointment(id);
+      await BookingService.deleteAppointment(id);
       setAppointments((prev) => prev.filter((appt) => appt.id !== id));
     } catch (err) {
       console.error('Failed to delete appointment:', err);
@@ -49,7 +48,7 @@ export const BookingProvider = ({ children }) => {
 
   const editAppointment = async (id, updatedData) => {
     try {
-      const updated = await updateAppointment(id, updatedData);
+      const updated = await BookingService.updateAppointment(id, updatedData);
       setAppointments((prev) =>
         prev.map((appt) => (appt.id === id ? updated : appt))
       );

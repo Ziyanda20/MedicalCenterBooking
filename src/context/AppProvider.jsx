@@ -1,4 +1,3 @@
-import React from 'react';
 import { BookingProvider } from './BookingContext';
 
 export function AppProviders({ children }) {
